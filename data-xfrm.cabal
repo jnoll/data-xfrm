@@ -1,0 +1,75 @@
+-- -*- mode: Haskell-Cabal; indent-tabs-mode: nil; -*-
+name:                data-xfrm
+version:             0.1.0.0
+synopsis:            Some tools for transforming data formats into each other
+description:         Please see README.md
+homepage:            http://github.com/jnoll/data-xfrm#readme
+license:             BSD3
+license-file:        LICENSE
+author:              John Noll
+maintainer:          
+copyright:           2010 John Noll
+category:            Text
+build-type:          Simple
+cabal-version:       >=1.10
+
+library
+  build-tools:   ghc >= 7.0
+
+  default-language:
+                   Haskell2010
+  hs-source-dirs:  src
+
+  exposed-modules:   Text.Table.XMLTable 
+                   , Text.Table.CSVTable 
+
+  build-depends:       base >= 4.5 && < 5.0
+                       , csv
+                       , xml
+
+executable yaml2xml
+  hs-source-dirs:      src
+  main-is:             yaml2xml.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                       , bytestring
+                       , cmdargs
+                       , scientific
+                       , text
+                       , unordered-containers
+                       , vector
+                       , xml
+                       , yaml
+
+executable xmltocsv
+  hs-source-dirs:      src
+  main-is:             xmltocsv.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                       , data-xfrm
+                       , xml
+
+executable csvtoxml
+  hs-source-dirs:      src
+  main-is:             csvtoxml.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                       , csv
+                       , data-xfrm
+                       , xml
+
+
+executable csv2dsv
+  hs-source-dirs:      src
+  main-is:             csv2dsv.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                       , bytestring
+                       , cmdargs
+                       , conduit
+                       , conduit-extra
+                       , conduit-combinators
+                       , csv-conduit
+                       , resourcet
+                       , text
+
